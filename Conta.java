@@ -1,5 +1,5 @@
 class Conta{
-	String titular;
+	Pessoa titular;
 	int numero;
 	int agencia;
 	double saldo;
@@ -26,11 +26,18 @@ class Conta{
 	}
 }
 
+class Pessoa{
+	String nome;
+	String cpf;
+	String dataNascimento;
+}
+
 class Programa{
 	public static void main(String[] args){
 		Conta mauricio = new Conta();
 		mauricio.numero = 123;
-		mauricio.titular = "Mauricio Doidao";
+		mauricio.titular = new Pessoa();
+		mauricio.titular.nome = "Mauricio Doidao";
 		mauricio.agencia = 1082;
 		mauricio.saldo = 100.1;
 
@@ -40,6 +47,7 @@ class Programa{
 
 		System.out.println(mauricio.saldo);
 		System.out.println(maria.saldo);
+		System.out.println(mauricio.titular.nome);
 	}
 
 }
