@@ -15,9 +15,9 @@ class Conta{
 			System.out.println("Valor acima do saldo");
 		}
 	}
-	void transfere(double valor, Conta origem, Conta destino){
-		if (origem.saldo >= valor){
-			origem.saca(valor);
+	void transfere(double valor, Conta destino){
+		if (this.saldo >= valor){
+			this.saca(valor);
 			destino.deposita(valor);
 		}
 		else{
@@ -36,7 +36,7 @@ class Programa{
 
 		Conta maria = new Conta();
 
-		mauricio.transfere(50, mauricio, maria);
+		mauricio.transfere(50, maria);
 
 		System.out.println(mauricio.saldo);
 		System.out.println(maria.saldo);
