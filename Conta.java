@@ -1,13 +1,14 @@
 class Conta{
-	Pessoa titular;
+	Cliente titular;
 	int numero;
 	int agencia;
-	double saldo;
+	private double saldo;
+	private double limite;
 
-	void deposita(double valorAserDepositado){
+	public void deposita(double valorAserDepositado){
 		this.saldo = saldo + valorAserDepositado;
 	}
-	void saca(double valorAserDebitado){
+	public void saca(double valorAserDebitado){
 		if (saldo >= valorAserDebitado){ //essa regra será propagada
 			this.saldo = saldo - valorAserDebitado;
 		}
@@ -15,7 +16,7 @@ class Conta{
 			System.out.println("Valor acima do saldo");
 		}
 	}
-	void transfere(double valor, Conta destino){
+	public void transfere(double valor, Conta destino){
 		if (this.saldo >= valor){
 			this.saca(valor);
 			destino.deposita(valor);
@@ -24,30 +25,17 @@ class Conta{
 			System.out.println("Valor acima do permitido");
 		}
 	}
+	public double getSaldo(){ //pega o saldo
+		return this.saldo;
+	}
+	public void setLimite(double novoLimite){ //muda o limite
+		this.limite = novoLimite;
+	}
 }
 
-class Pessoa{
+class Cliente{
 	String nome;
 	String cpf;
+	String endereco;
 	String dataNascimento;
-}
-
-class Programa{
-	public static void main(String[] args){
-		Conta mauricio = new Conta();
-		mauricio.numero = 123;
-		mauricio.titular = new Pessoa();
-		mauricio.titular.nome = "Mauricio Doidao";
-		mauricio.agencia = 1082;
-		mauricio.saldo = 100.1;
-
-		Conta maria = new Conta();
-
-		mauricio.transfere(50, maria);
-
-		System.out.println(mauricio.saldo);
-		System.out.println(maria.saldo);
-		System.out.println(mauricio.titular.nome);
-	}
-
 }
