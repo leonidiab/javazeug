@@ -1,4 +1,5 @@
-public class ErrParEx extends {
-
+public class ErrParEx extends Exception{
+	ImplementaCalc calculos = new ImplementaCalc();
+	
 	
 }
